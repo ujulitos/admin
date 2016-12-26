@@ -1,0 +1,25 @@
+{
+  "name": "Plataforma de Administración para Inducción Lala",
+  "short_name": "Inducción Lala",
+  "icons": [{
+    "src": "images/logo_ch.png",
+    "sizes": "128x128",
+    "type": "image/png"
+  }, {
+    "src": "images/logo_ch.png",
+    "sizes": "152x152",
+    "type": "image/png"
+  }, {
+    "src": "images/logo_ch.png",
+    "sizes": "144x144",
+    "type": "image/png"
+  }, {
+    "src": "images/logo_ch.png",
+    "sizes": "192x192",
+    "type": "image/png"
+  }],
+  "start_url": "/index.html?homescreen=1",
+  "display": "standalone",
+  "background_color": "#607d8b",
+  "theme_color": "#607d8b"
+}

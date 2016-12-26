@@ -1,0 +1,138 @@
+<div class="seccionUsuarios">
+    <!-- <h2 class="titulo_seccion">Usuarios</h2> -->
+
+
+
+
+    <div id="agregarUsuarios" class="mdl-grid">
+        <!-- <div class="mdl-layout-spacer"></div> -->
+
+
+        <div id="agregarUsuariosInd" class="mdl-cell mdl-cell--6-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-card mdl-shadow--3dp">
+            <div class="mdl-card mdl-shadow--2dp mdl-card--horizontal card_usuarios_ind">
+                <div class="mdl-card__media left_card_usuarios_ind">
+                    <i class="material-icons fondo_usuarios_ind">person</i>
+                </div>
+                <div class="mdl-card__title">
+                    <h2 class="mdl-card__title-text">Agregar un usuario</h2>
+                </div>
+                <div class="mdl-card__supporting-text">
+                    Agrega un nuevo usuario.
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                    <div id="botonAgregarUsuarioInd" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-color-text--blue-grey-600 ripplelink" data-upgraded=",MaterialButton,MaterialRipple"><i class="material-icons icon_boton">person_add</i> Agregar usuario</div>
+                </div>
+                <div class="mdl-card__menu">
+                </div>
+            </div>
+        </div>
+
+
+
+        <div id="agregarUsuariosGpo" class="mdl-cell mdl-cell--6-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-card mdl-shadow--3dp">
+            <div class="mdl-card mdl-shadow--2dp mdl-card--horizontal card_usuarios_gpo">
+                <div class="mdl-card__media left_card_usuarios_gpo">
+                    <i class="material-icons fondo_usuarios_gpo">group</i>
+                </div>
+                <div class="mdl-card__title">
+                    <h2 class="mdl-card__title-text">Agregar un grupo de usuarios</h2>
+                </div>
+                <div class="mdl-card__supporting-text">
+                    Carga un archivo para agregar un grupo de usuarios.
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                    <div id="botonAgregarUsuarioGpo" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-color-text--blue-grey-600 ripplelink" data-upgraded=",MaterialButton,MaterialRipple"><i class="material-icons icon_boton">group_add</i> Agregar usuarios</div>
+                </div>
+                <div class="mdl-card__menu">
+                </div>
+            </div>
+        </div>
+
+
+        <!-- <div class="mdl-layout-spacer"></div> -->
+    </div>
+
+
+
+
+    <div id="tablaUsuarios" class="mdl-grid">
+
+        <table class="mdl-data-table mdl-js-data-table mdl-cell mdl-cell--12-col mdl-shadow--3dp">
+            <thead class="titulo_tabla_usuarios">
+                <tr>
+                    <th class="mdl-data-table__cell--non-numeric header_tabla">
+                        <div class="titulo_tabla">No. de Colaborador</div>
+                    </th>
+                    <th class="mdl-data-table__cell--non-numeric header_tabla">
+                        <div class="titulo_tabla">Nombre</div>
+                    </th>
+                    <th class="mdl-data-table__cell--non-numeric">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable area_buscar_usuario">
+                            <label class="mdl-button mdl-js-button mdl-button--icon icono_buscar" for="busqueda_usuario">
+                                           <i class="material-icons">search</i>
+                                       </label>
+                            <div class="mdl-textfield__expandable-holder holder_buscar_usuario">
+                                <input class="mdl-textfield__input input_buscar_usuario" type="text" id="busqueda_usuario">
+                                <label class="mdl-textfield__label label_input_buscar_usuario" for="search">Buscar usuario...</label>
+                            </div>
+                        </div>
+                        <!-- <div class="titulo_tabla">
+                            <div id="botonCrearUsuario" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect mdl-color--light-green ripplelink mdl-color-text--white botonCrearUsuario" style="float:right; margin: 14px 0 10px 0;"><i class="material-icons icon_boton">add_circle_outline</i> Nuevo Usuario</div>
+                        </div> -->
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="texto_tabla usuarios_int"></tbody>
+
+            
+
+
+        </table>
+
+        <div id="paginadoUsuarios" class="tabla_info"></div>
+
+
+
+
+        <div id="div_resporpag" class="mdl-select mdl-js-select mdl-select--floating-label">
+            <select class="mdl-select__input" id="resporpag" name="resporpag">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+            </select>
+            <label class="mdl-select__label" for="resporpag">Resultados por pagina:</label>
+        </div>
+
+
+
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--12-col">
+                <div id="botonMenosUsuarios" class="botonPaginado mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-color--white mdl-color-text--light-green ripplelink">
+                    <i class="material-icons">keyboard_arrow_up</i>
+                </div>
+                <div id="botonMasUsuarios" class="botonPaginado mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-color--white mdl-color-text--light-green ripplelink">
+                    <i class="material-icons">keyboard_arrow_down</i>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+<script>
+    activaSecUsuarios();
+</script>

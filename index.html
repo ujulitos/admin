@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+
+	<!-- Disable tap highlight on IE -->
+	<meta name="msapplication-tap-highlight" content="no">
+
+	<!-- Web Application Manifest -->
+	<link rel="manifest" href="manifest.json" <!-- Add to homescreen for Chrome on Android -->
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="application-name" content="Web Starter Kit">
+	<link rel="icon" sizes="192x192" href="images/logo_ch.png">
+
+	<!-- Add to homescreen for Safari on iOS -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-title" content="Web Starter Kit">
+	<link rel="apple-touch-icon" href="images/logo_ch.png">
+
+	<!-- Tile icon for Win8 (144x144 + tile color) -->
+	<meta name="msapplication-TileImage" content="images/logo_ch.png">
+	<meta name="msapplication-TileColor" content="#607d8b">
+
+	<!-- Color the status bar on mobile devices -->
+	<meta name="theme-color" content="#607d8b">
+
+	<script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+
+
+
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/dialog-polyfill.css" />
+	<link rel="stylesheet" href="css/jquery-ui.min.css">
+	<link rel="stylesheet" href="css/material.min.css">
+	<link rel="stylesheet" href="css/dataTables.material.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/estilos.css" type="text/css" charset="utf-8" />
+	<!-- <link rel="stylesheet" href="css/helpers.css"> -->
+	<link rel="stylesheet" href="css/ripple.css">
+
+	<script src="js/jquery-2.1.1.min.js"></script>
+	<script src="js/jquery-ui.min.js"></script>
+	<script src="js/jquery.easypiechart.min.js"></script>
+	<script src="js/dialog-polyfill.js"></script>
+	<script src="js/moment.js"></script>
+	<script src="js/material.min.js"></script>
+	<script src="js/jquery.dataTables.min.js"></script>
+	<script src="js/dataTables.material.min.js"></script>
+
+	<script src="js/descRepIndiv.js"></script>
+	<script src="js/descRepGpo.js"></script>
+	<!-- <script src="http://ideas4training.com/pruebas5/cursos/lala/induccion/admin/js/app.js"></script> -->
+	<script src="js/app.js"></script>
+
+
+
+	<title>Admin</title>
+
+</head>
+
+<body>
+
+
+
+
+
+	<div class="login mdl-layout mdl-js-layout">
+		<div class="demo-ribbon mdl-color--blue-grey"></div>
+
+		<main class="demo-main mdl-layout__content">
+			<h2 class="logo_portada t-center mdl-color-text--white text-shadow"></h2>
+			<a id="top"></a>
+			<div class="mdl-grid">
+				<div class="mdl-cell mdl-cell--4-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+				<div class="mdl-color--white mdl-shadow--4dp mdl-color-text--grey-100 mdl-cell mdl-cell--4-col mdl-cell--12-col-tablet dialogo_login">
+
+					<div class="mdl-card__title titulo_login">
+						<h2 class="mdl-card__title-text">
+							<i class="material-icons mdl-color-text--grey m-r-5 lh-13" style="padding: 0 10px 10px 0px; line-height: 1.4;">account_circle</i>
+								Ingreso
+						</h2>
+					</div>
+					<div class="p-l-20 p-r-20 p-b-20">
+						<form action="#">
+							<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+								<input class="mdl-textfield__input" type="text" id="inputUsuario" />
+								<label class="mdl-textfield__label" for="inputUsuario">Usuario</label>
+							</div>
+							<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+								<input class="mdl-textfield__input" type="password" id="inputPassword" />
+								<label class="mdl-textfield__label" for="inputPassword">Contraseña</label>
+							</div>
+							<div class="mensaje_error_login"></div>
+							<div class="m-t-20 botones_login">
+								<button type="button" id="botonEntrar" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect mdl-color--light-green">
+									Entrar
+								</button>
+								<!-- <button type="reset" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+									Cancelar
+								</button> -->
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+
+
+
+
+
+
+
+	<div class="contenido_gral demo-layout mdl-layout mdl-js-layout">
+
+
+		<header class="header demo-header">
+			<div class="mdl-layout__header-row">
+				<span class="mdl-layout-title"></span>
+				<div class="mdl-layout-spacer"></div>
+				<div class="perfil">
+					<i class="material-icons foto_perfil">account_circle</i>
+					<div class="nombre_perfil"></div>
+				</div>
+				<!-- <div class="header_buscar mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+					<label class="mdl-button mdl-js-button mdl-button--icon" for="search">
+						<i class="material-icons">search</i>
+					</label>
+					<div class="mdl-textfield__expandable-holder">
+						<input class="mdl-textfield__input" type="text" id="search">
+						<label class="mdl-textfield__label" for="search">Enter your query...</label>
+					</div>
+				</div> -->
+				<button class="boton_header_mas mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
+					<i class="material-icons">more_vert</i>
+				</button>
+				<ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
+					<li class="mdl-menu__item">Acerca de</li>
+					<li class="mdl-menu__item">Contacto</li>
+					<li class="mdl-menu__item">Información</li>
+				</ul>
+
+				<div id="botonCerrar" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect mdl-color--red-A100 ripplelink botonCerrar">Cerrar</div>
+			</div>
+		</header>
+		<div class="demo-drawer mdl-layout__drawer">
+			<header class="demo-drawer-header">
+				<div class="logo"></div>
+				<!-- <div class="perfil">
+					<i class="material-icons foto_perfil">account_circle</i>
+					<div class="nombre_perfil"></div>
+				</div> -->
+			</header>
+
+
+
+			<nav class="demo-navigation mdl-navigation">
+				<div id="boton_inicio" class="mdl-navigation__link activo"><i class="mdl-color-text--white material-icons">home</i>Inicio</div>
+				<div id="boton_cursos" class="mdl-navigation__link activo"><i class="mdl-color-text--white material-icons">import_contacts</i>Cursos</div>
+				<div id="boton_usuarios" class="mdl-navigation__link activo"><i class="mdl-color-text--white material-icons">directions_walk</i>Usuarios</div>
+				<div id="boton_sesiones" class="mdl-navigation__link activo"><i class="mdl-color-text--white material-icons">access_time</i>Sesiones</div>
+			</nav>
+
+		</div>
+
+
+
+
+
+
+		<main id="contenido" class="contenido mdl-layout__content mdl-color--blue-grey-50">
+			<div id="content"></div>
+		</main>
+
+
+
+
+
+		<!--     diálogos       -->
+
+		<dialog class="mdl-dialog dialogoLoginParticipante">
+			<div class="titulo_dialogo_confirm">Número de colaborador:</div>
+			<div class="mdl-dialog__content">
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input id="nvo_no_colaborador" class="mdl-textfield__input" type="text" id="inputUsuario" />
+					<label class="mdl-textfield__label" for="inputUsuario">Ingresa tu número</label>
+				</div>
+			</div>
+			<div class="mdl-dialog__actions" autofocus>
+				<button type="button" id="botonAceptarLoginParticipante" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect mdl-color--light-green">Aceptar</button>
+				<button type="button" id="botonCancelarLoginParticipante" class="mdl-button mdl-js-button mdl-js-ripple-effect">Cancelar</button>
+			</div>
+		</dialog>
+
+
+		<dialog class="mdl-dialog dialogoCerrar">
+			<h4 class="mdl-dialog__title">¿Estás seguro?</h4>
+			<div class="mdl-dialog__content">
+				<p>
+					Al cerrar sesión se desconectarán todos los datos.
+				</p>
+			</div>
+			<div class="mdl-dialog__actions" autofocus>
+				<button type="button" id="botonAceptarCerrar" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect mdl-color--light-green">Aceptar</button>
+				<button type="button" id="botonCancelarCerrar" class="mdl-button mdl-js-button mdl-js-ripple-effect">Cancelar</button>
+			</div>
+		</dialog>
+
+
+
+
+
+		<!--     diálogos usuarios       -->
+
+		<dialog class="mdl-dialog dialogoCrearUsuario">
+			<div class="titulo_dialogo_confirm">Nuevo Usuario</div>
+			<div class="mdl-dialog__content">
+
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo usu_nocolabnvo">
+					<input id="nvo_usu_nocolab" class="mdl-textfield__input" type="text" id="usunocolab" />
+					<label class="mdl-textfield__label" for="usunocolab">No. de Colaborador</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo usu_nombrenvo">
+					<input id="nvo_usu_nombre" class="mdl-textfield__input" type="text" id="usunombre" />
+					<label class="mdl-textfield__label" for="usunombre">Nombre</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input id="nvo_usu_rfc" class="mdl-textfield__input" type="text" id="usurfc" />
+					<label class="mdl-textfield__label" for="usurfc">RFC</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input id="nvo_usu_curp" class="mdl-textfield__input" type="text" id="usucurp" />
+					<label class="mdl-textfield__label" for="usucurp">CURP</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input id="nvo_usu_fecnac" class="mdl-textfield__input" type="text" id="usufecnac" />
+					<label class="mdl-textfield__label" for="usufecnac">Fecha de Nacimiento</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input id="nvo_usu_fecing" class="mdl-textfield__input" type="text" id="usufecing" />
+					<label class="mdl-textfield__label" for="usufecing">Fecha de Ingreso</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input id="nvo_usu_pos" class="mdl-textfield__input" type="text" id="usupos" />
+					<label class="mdl-textfield__label" for="usupos">Posición</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input id="nvo_usu_ap" class="mdl-textfield__input" type="text" id="usuap" />
+					<label class="mdl-textfield__label" for="usuap">Área Personal</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input id="nvo_usu_apdesc" class="mdl-textfield__input" type="text" id="usuapdesc" />
+					<label class="mdl-textfield__label" for="usuapdesc">Área Personal Descripción</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input id="nvo_usu_divp" class="mdl-textfield__input" type="text" id="usudivp" />
+					<label class="mdl-textfield__label" for="usudivp">División de Personal</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input id="nvo_usu_ccostedesc" class="mdl-textfield__input" type="text" id="nvo_usu_ccostedesc" />
+					<label class="mdl-textfield__label" for="usudivpdesc">Centro de Coste Descripción</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input id="nvo_usu_idsoc" class="mdl-textfield__input" type="text" id="usuidsoc" />
+					<label class="mdl-textfield__label" for="usuidsoc">Id de Sociedad</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input id="nvo_usu_iddiv" class="mdl-textfield__input" type="text" id="usuiddiv" />
+					<label class="mdl-textfield__label" for="usuiddiv">Id de Divsión</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input id="nvo_usu_idsubdiv" class="mdl-textfield__input" type="text" id="usuidsubdiv" />
+					<label class="mdl-textfield__label" for="usuidsubdiv">Id de Subdivisión</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input id="nvo_usu_subdivpdesc" class="mdl-textfield__input" type="text" id="usuidsubdivpdesc" />
+					<label class="mdl-textfield__label" for="usuidsubdivpdesc">Subdivisión de Personal Descripción</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input id="nvo_usu_nsexo" class="mdl-textfield__input" type="text" id="usunsexo" />
+					<label class="mdl-textfield__label" for="usunsexo">No. de Sexo</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input id="nvo_usu_nonomina" class="mdl-textfield__input" type="text" id="usunonomina" />
+					<label class="mdl-textfield__label" for="usunonomina">No. de Nómina</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input id="nvo_usu_nomina" class="mdl-textfield__input" type="text" id="usunomina" />
+					<label class="mdl-textfield__label" for="usunomina">Nómina</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input id="nvo_usu_soc" class="mdl-textfield__input" type="text" id="ususoc" />
+					<label class="mdl-textfield__label" for="ususoc">Sociedad</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input id="nvo_usu_zona" class="mdl-textfield__input" type="text" id="usuzona" />
+					<label class="mdl-textfield__label" for="usuzona">Zona</label>
+				</div>
+				<div class="mensaje_error_nvo_usuario"></div>
+
+			</div>
+			<div class="mdl-dialog__actions" autofocus>
+				<button type="button" id="botonAceptarCrearUsuario" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect mdl-color--light-green">Aceptar</button>
+				<button type="button" id="botonCancelarCrearUsuario" class="mdl-button mdl-js-button mdl-js-ripple-effect">Cancelar</button>
+			</div>
+		</dialog>
+
+
+
+
+
+
+
+		<dialog class="mdl-dialog dialogoAgregarUsuarioGpo">
+			<div class="titulo_dialogo_confirm">Agregar grupo de usuarios</div>
+			<div class="mdl-dialog__content">
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input class="mdl-textfield__input" placeholder="Elegir Archivo" type="text" id="inputArchivo" readonly />
+					<div class="mdl-button mdl-button--icon mdl-button--file botonSubirFile">
+						<i class="material-icons">attach_file</i>
+						<input type="file" id="inputArchBoton" accept=".json*" />
+					</div>
+				</div>
+
+				<div class="mensaje_error_nvo_usgpo"></div>
+			</div>
+			<div class="mdl-dialog__actions" autofocus>
+				<button type="button" id="botonAceptarAgregarUsuarioGpo" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect mdl-color--light-green">Agregar</button>
+				<button type="button" id="botonCancelarAgregarUsuarioGpo" class="mdl-button mdl-js-button mdl-js-ripple-effect">Cancelar</button> </div>
+		</dialog>
+
+
+
+		<dialog class="mdl-dialog dialogoAgregarUsuarioGpoExito">
+			<div class="titulo_dialogo_confirm"></div>
+			<br>
+			<div class="mdl-dialog__content" style="font-size: 20px; line-height: 1.5; color: #22454f;">
+			</div>
+			<div class="mdl-dialog__actions" autofocus>
+				<button type="button" id="botonCerrarUsuarioGpoExito" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect mdl-color--light-green">Aceptar</button>
+			</div>
+		</dialog>
+
+
+
+
+
+		<dialog class="mdl-dialog dialogoModificarUsuario">
+			<div class="titulo_dialogo_confirm">Modificar Usuario</div>
+			<div class="mdl-dialog__content">
+
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo usu_nombre">
+					<input id="act_usu_nombre" class="mdl-textfield__input" type="text" id="usunombre" />
+					<label class="mdl-textfield__label" for="usunombre">Nombre</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input id="act_usu_rfc" class="mdl-textfield__input" type="text" id="usurfc" />
+					<label class="mdl-textfield__label" for="usurfc">RFC</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input id="act_usu_curp" class="mdl-textfield__input" type="text" id="usucurp" />
+					<label class="mdl-textfield__label" for="usucurp">CURP</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input id="act_usu_fecnac" class="mdl-textfield__input" type="text" id="usufecnac" />
+					<label class="mdl-textfield__label" for="usufecnac">Fecha de Nacimiento</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input id="act_usu_fecing" class="mdl-textfield__input" type="text" id="usufecing" />
+					<label class="mdl-textfield__label" for="usufecing">Fecha de Ingreso</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input id="act_usu_pos" class="mdl-textfield__input" type="text" id="usupos" />
+					<label class="mdl-textfield__label" for="usupos">Posición</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input id="act_usu_ap" class="mdl-textfield__input" type="text" id="usuap" />
+					<label class="mdl-textfield__label" for="usuap">Área Personal</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input id="act_usu_apdesc" class="mdl-textfield__input" type="text" id="usuapdesc" />
+					<label class="mdl-textfield__label" for="usuapdesc">Área Personal Descripción</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input id="act_usu_divp" class="mdl-textfield__input" type="text" id="usudivp" />
+					<label class="mdl-textfield__label" for="usudivp">División de Personal</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input id="act_usu_ccostedesc" class="mdl-textfield__input" type="text" id="act_usu_ccostedesc" />
+					<label class="mdl-textfield__label" for="usudivpdesc">Centro de Coste Descripción</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input id="act_usu_idsoc" class="mdl-textfield__input" type="text" id="usuidsoc" />
+					<label class="mdl-textfield__label" for="usuidsoc">Id de Sociedad</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input id="act_usu_iddiv" class="mdl-textfield__input" type="text" id="usuiddiv" />
+					<label class="mdl-textfield__label" for="usuiddiv">Id de Divsión</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input id="act_usu_idsubdiv" class="mdl-textfield__input" type="text" id="usuidsubdiv" />
+					<label class="mdl-textfield__label" for="usuidsubdiv">Id de Subdivisión</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input id="act_usu_subdivpdesc" class="mdl-textfield__input" type="text" id="usuidsubdivpdesc" />
+					<label class="mdl-textfield__label" for="usuidsubdivpdesc">Subdivisión de Personal Descripción</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input id="act_usu_nsexo" class="mdl-textfield__input" type="text" id="usunsexo" />
+					<label class="mdl-textfield__label" for="usunsexo">No. de Sexo</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input id="act_usu_nonomina" class="mdl-textfield__input" type="text" id="usunonomina" />
+					<label class="mdl-textfield__label" for="usunonomina">No. de Nómina</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input id="act_usu_nomina" class="mdl-textfield__input" type="text" id="usunomina" />
+					<label class="mdl-textfield__label" for="usunomina">Nómina</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input id="act_usu_soc" class="mdl-textfield__input" type="text" id="ususoc" />
+					<label class="mdl-textfield__label" for="ususoc">Sociedad</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input id="act_usu_zona" class="mdl-textfield__input" type="text" id="usuzona" />
+					<label class="mdl-textfield__label" for="usuzona">Zona</label>
+				</div>
+				<div class="mensaje_error_act_usuario"></div>
+
+			</div>
+			<div class="mdl-dialog__actions" autofocus>
+				<button type="button" id="botonAceptarModificarUsuario" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect mdl-color--light-green">Aceptar</button>
+				<button type="button" id="botonCancelarModificarUsuario" class="mdl-button mdl-js-button mdl-js-ripple-effect">Cancelar</button>
+			</div>
+		</dialog>
+
+
+		<dialog class="mdl-dialog dialogoBorrarUsuario">
+			<div class="titulo_dialogo_confirm">¿Seguro que deseas eliminar este usuario?</div>
+			<br>
+			<!-- <div class="mdl-dialog__content">
+			</div> -->
+			<div class="mdl-dialog__actions" autofocus>
+				<button type="button" id="botonAceptarBorrarUsuario" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect mdl-color--red-A100">Aceptar</button>
+				<button type="button" id="botonCancelarBorrarUsuario" class="mdl-button mdl-js-button mdl-js-ripple-effect">Cancelar</button>
+			</div>
+		</dialog>
+
+
+
+
+		<!--     diálogos sesiones       -->
+
+		<dialog class="mdl-dialog dialogoCrearSesion">
+			<div class="titulo_dialogo_confirm">Nueva Sesión</div>
+			<div class="mdl-dialog__content">
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input id="nvo_ses_nombre" class="mdl-textfield__input" type="text" id="sesnombre" />
+					<label class="mdl-textfield__label" for="sesnombre">Nombre</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input id="nvo_ses_zona" class="mdl-textfield__input" type="text" id="seszona" />
+					<label class="mdl-textfield__label" for="seszona">Zona</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input id="nvo_ses_sede" class="mdl-textfield__input" type="text" id="sessede" />
+					<label class="mdl-textfield__label" for="sessede">Sede</label>
+				</div>
+				<div class="mensaje_error_nvo_sesion"></div>
+			</div>
+			<div class="mdl-dialog__actions" autofocus>
+				<button type="button" id="botonAceptarCrearSesion" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect mdl-color--light-green">Aceptar</button>
+				<button type="button" id="botonCancelarCrearSesion" class="mdl-button mdl-js-button mdl-js-ripple-effect">Cancelar</button>
+			</div>
+		</dialog>
+
+
+		<dialog class="mdl-dialog dialogoModificarSesion">
+			<div class="titulo_dialogo_confirm">Modificar sesión</div>
+			<div class="mdl-dialog__content">
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input id="act_ses_nombre" class="mdl-textfield__input" type="text" id="sesnombre" />
+					<label class="mdl-textfield__label" for="sesnombre">Nombre</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input id="act_ses_zona" class="mdl-textfield__input" type="text" id="seszona" />
+					<label class="mdl-textfield__label" for="seszona">Zona</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+					<input id="act_ses_sede" class="mdl-textfield__input" type="text" id="sessede" />
+					<label class="mdl-textfield__label" for="sessede">Sede</label>
+				</div>
+				<div class="mensaje_error_act_sesion"></div>
+			</div>
+			<div class="mdl-dialog__actions" autofocus>
+				<button type="button" id="botonAceptarModificarSesion" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect mdl-color--light-green">Aceptar</button>
+				<button type="button" id="botonCancelarModificarSesion" class="mdl-button mdl-js-button mdl-js-ripple-effect">Cancelar</button>
+			</div>
+		</dialog>
+
+
+
+		<dialog class="mdl-dialog dialogoReporteSesion">
+			<div class="titulo_dialogo_confirm">Descargar el reporte de esta sesión</div>
+			<br>
+			<!-- <div class="mdl-dialog__content">
+			</div> -->
+			<div class="mdl-dialog__actions" autofocus>
+				<button type="button" id="botonAceptarReporteSesion" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect mdl-color--light-green">Aceptar</button>
+				<button type="button" id="botonCancelarReporteSesion" class="mdl-button mdl-js-button mdl-js-ripple-effect">Cancelar</button>
+			</div>
+		</dialog>
+
+
+
+		<dialog class="mdl-dialog dialogoReporteGralSesiones">
+			<div class="titulo_dialogo_confirm">Descargar el reporte de todas las sesiones</div>
+			<br>
+			<!-- <div class="mdl-dialog__content">
+			</div> -->
+			<div class="mdl-dialog__actions" autofocus>
+				<button type="button" id="botonAceptarReporteGralSesiones" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect mdl-color--light-green">Aceptar</button>
+				<button type="button" id="botonCancelarReporteGralSesiones" class="mdl-button mdl-js-button mdl-js-ripple-effect">Cancelar</button>
+			</div>
+		</dialog>
+
+
+
+		<dialog class="mdl-dialog dialogoBorrarSesion">
+			<div class="titulo_dialogo_confirm">¿Seguro que deseas eliminar esta sesión?</div>
+			<br>
+			<!-- <div class="mdl-dialog__content">
+			</div> -->
+			<div class="mdl-dialog__actions" autofocus>
+				<button type="button" id="botonAceptarBorrarSesion" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect mdl-color--red-A100">Aceptar</button>
+				<button type="button" id="botonCancelarBorrarSesion" class="mdl-button mdl-js-button mdl-js-ripple-effect">Cancelar</button>
+			</div>
+		</dialog>
+
+
+
+	</div>
+
+
+
+	<div id="cargando">
+		<div id="cargando_int"></div>
+		<div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active cargando_spinner"></div>
+	</div>
+
+
+
+
+
+
+
+
+</body>
+
+</html>

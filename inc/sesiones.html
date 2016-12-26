@@ -1,0 +1,109 @@
+<div class="seccionSesiones">
+	<!-- <h2 class="titulo_seccion">Sesiones</h2> -->
+
+
+
+	<div id="reportesSesiones" class="mdl-grid">
+		<div class="mdl-layout-spacer"></div>
+
+		<div class="mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet mdl-cell--12-col-phone mdl-card mdl-shadow--3dp">
+			<div class="mdl-card mdl-shadow--2dp mdl-card--horizontal card_reportes">
+				<div class="mdl-card__media left_card_reportes">
+					<i class="material-icons fondo_reportes">equalizer</i>
+				</div>
+				<div class="mdl-card__title">
+					<h2 class="mdl-card__title-text">Reporte de Sesiones</h2>
+				</div>
+				<div class="mdl-card__supporting-text">
+					Descarga un reporte de todas las sesiones disponibles hasta el momento.
+				</div>
+				<div id="botonesReportesSesiones" class="mdl-card__actions mdl-card--border">
+					<br>
+					<div id="botonReportesSesiones1" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-color-text--blue-grey-600 ripplelink" data-upgraded=",MaterialButton,MaterialRipple"><i class="material-icons icon_boton">file_download</i> Inducción Institucional</div>
+					<br><br>
+					<div id="botonReportesSesiones2" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-color-text--blue-grey-600 ripplelink" data-upgraded=",MaterialButton,MaterialRipple"><i class="material-icons icon_boton">file_download</i> Inducción a la Empresa</div>
+					<br><br>
+					<div id="botonReportesSesiones3" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-color-text--blue-grey-600 ripplelink" data-upgraded=",MaterialButton,MaterialRipple"><i class="material-icons icon_boton">file_download</i> Inducción al Departamento</div>
+					<br><br>
+					<div id="botonReportesSesiones4" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-color-text--blue-grey-600 ripplelink" data-upgraded=",MaterialButton,MaterialRipple"><i class="material-icons icon_boton">file_download</i> Inducción al Puesto</div>
+					<br><br>
+				</div>
+				<div class="mdl-card__menu">
+				</div>
+			</div>
+		</div>
+
+
+		<div class="mdl-layout-spacer"></div>
+	</div>
+
+
+	<br><br>
+
+
+	<div class="mdl-card mdl-cell--12-col card_transparente">
+		<div class="mdl-card__title">
+			<h1 class="mdl-card__title-text">Inducción Institucional</h1>
+		</div>
+
+		<div class="mdl-card__actions mdl-card--border">
+
+
+			<table id="tablaSesiones" class="mdl-data-table mdl-js-data-table mdl-cell mdl-cell--12-col mdl-shadow--3dp">
+				<thead style="background-color:#7291c1;">
+					<tr>
+						<th class="mdl-data-table__cell--non-numeric">
+							<div class="titulo_tabla">
+								Fecha
+							</div>
+						</th>
+						<th class="mdl-data-table__cell--non-numeric">
+							<div class="titulo_tabla">
+								Zona
+							</div>
+						</th>
+						<th class="mdl-data-table__cell--non-numeric">
+							<div class="titulo_tabla">
+								Sede
+							</div>
+						</th>
+						<th class="mdl-data-table__cell--non-numeric">
+							<div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable area_buscar_sesion">
+								<label class="mdl-button mdl-js-button mdl-button--icon icono_buscar" for="busqueda_sesion">
+										   <i class="material-icons">search</i>
+									   </label>
+								<div class="mdl-textfield__expandable-holder holder_buscar_sesion">
+									<!-- <input class="mdl-textfield__input input_buscar_sesion" type="text" id="busqueda_sesion"> -->
+									<input id="busqueda_sesion" type="search" class="form-control input-sm" placeholder="" aria-controls="tablaSesiones">
+									<label class="mdl-textfield__label label_input_buscar_sesion" for="search">Buscar sesión...</label>
+								</div>
+							</div>
+						</th>
+					</tr>
+				</thead>
+
+
+				<tbody class="texto_tabla sesiones_int"></tbody>
+			</table>
+
+
+
+
+		</div>
+	</div>
+
+
+	<br><br>
+
+	<div class="tabla_gral"></div>
+	<div class="tablas"></div>
+
+</div>
+
+
+
+
+
+<script>
+	activaSecSesiones();
+</script>
